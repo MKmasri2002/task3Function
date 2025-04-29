@@ -8,18 +8,27 @@ void main() {
     {"id": 6, "name": "Water", "price": 1.1},
     {"id": 7, "name": "Galaxy", "price": 1.6},
   ];
-
-  printItemsWithNewPrice(items: items);
-}
-
-void printItemsWithNewPrice({required List<Map<String, dynamic>> items}) {
-  double price;
-  double priceAfterDiscount;
   for (int i = 0; i < items.length; i++) {
-    price = items[i]["price"];
-    priceAfterDiscount = price - (price * 0.02);
-    print(
-      "ID : ${items[i]["id"]}  Name : ${items[i]["name"]}  Price After Discount : $priceAfterDiscount",
+    printItemsWithNewPrice(
+      id: items[i]["id"],
+      name: items[i]["name"],
+      price: items[i]["price"],
     );
   }
+}
+
+void printItemsWithNewPrice({
+  required int id,
+  String? name,
+  required double price,
+}) {
+  double priceAfterDiscount;
+
+  priceAfterDiscount = price - (price * 0.02);
+  if (name != null)
+    print("ID : $id  Name : $name  Price After Discount : $priceAfterDiscount");
+  else
+    print(
+      "ID : $id  Name : Unkown  Price After Discount : $priceAfterDiscount",
+    );
 }
